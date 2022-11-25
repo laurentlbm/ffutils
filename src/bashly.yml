@@ -1,0 +1,31 @@
+name: ffutils
+help: Simple helper for common ffmpeg commands
+version: 0.1.0
+
+commands:
+- name: completions
+  help: |-
+    Generate bash completions
+    Usage: eval "\$(ffutils completions)"
+
+- name: extract-cc
+  help: Extract Closed Captioning from a video file into a SRT file.
+
+  completions:
+  - <directory>
+  - <file>
+
+  args:
+  - name: video
+    required: true
+    help: Video file
+
+  flags:
+  - long: --output
+    short: -o
+    arg: output
+    help: "Target filename (default: .srt file named after video file, saved in current directory)"
+
+  examples:
+  - ffutils extract-cc video_file.mp4
+  - ffutils extract-cc /path/video_file.mp4 -o /path2/suds.srt
